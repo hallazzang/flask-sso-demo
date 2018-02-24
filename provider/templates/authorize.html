@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h2>Authorization Server</h2>
+  <div>Authorizing as {{ user_name }} for {{ app_name }}</div>
+  <div>
+    Review permissions:
+    <ul>
+      {% for item in scope %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    <form method="post">
+      {{ form.csrf_token }}
+      <button type="submit">Accept</button>
+    </form>
+  </div>
+{% endblock %}

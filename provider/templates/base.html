@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <body>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% for category, message in messages %}
+        <div>({{ category }}) {{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    {% block body %}
+    {% endblock %}
+  </body>
+</html>

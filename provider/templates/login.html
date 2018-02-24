@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% macro render_field(field) %}
+  <p>
+    {{ field.label }} {{ field }}
+    {% if field.errors %}
+      <ul>
+        {% for error in field.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </p>
+{% endmacro %}
+
+{% block body %}
+  <form method="post">
+    {{ form.csrf_token }}
+    {{ render_field(form.user_id) }}
+    {{ render_field(form.password1) }}
+    {{ render_field(form.password2) }}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}
